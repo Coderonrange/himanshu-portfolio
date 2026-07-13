@@ -12,10 +12,17 @@ import {
   Smartphone, 
   Brush,
   Cpu,
-  Rocket
+  Rocket,
+  Server,
+  Terminal,
+  GitBranch,
+  Coffee,
+  Box,
+  GitPullRequest,
+  Monitor
 } from 'lucide-react';
 
-const SkillsSection = ({ skills }) => {
+const SkillsSection = ({ skills, tools }) => {
   // Icon mapping based on skill category or name
   const getIcon = (skillName) => {
     const name = skillName.toLowerCase();
@@ -40,6 +47,26 @@ const SkillsSection = ({ skills }) => {
     if (name.includes('fast') || name.includes('optimization') || name.includes('performance')) 
       return <Zap className="w-10 h-10 text-yellow-400" />;
     return <Layers className="w-10 h-10 text-sky-400" />;
+  };
+
+  // Icon mapping for tools
+  const getToolIcon = (toolName) => {
+    const name = toolName.toLowerCase();
+    if (name.includes('postman')) 
+      return <Box className="w-8 h-8 text-orange-400" />;
+    if (name.includes('github')) 
+      return <GitBranch className="w-8 h-8 text-purple-400" />;
+    if (name.includes('vs code') || name.includes('vscode')) 
+      return <Monitor className="w-8 h-8 text-blue-400" />;
+    if (name.includes('git')) 
+      return <GitPullRequest className="w-8 h-8 text-red-400" />;
+    if (name.includes('docker')) 
+      return <Box className="w-8 h-8 text-blue-400" />;
+    if (name.includes('terminal') || name.includes('cli')) 
+      return <Terminal className="w-8 h-8 text-green-400" />;
+    if (name.includes('figma')) 
+      return <Brush className="w-8 h-8 text-pink-400" />;
+    return <Server className="w-8 h-8 text-slate-400" />;
   };
 
   // Get level color
@@ -77,7 +104,13 @@ const SkillsSection = ({ skills }) => {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6 md:gap-8">
+        {/* Skills Grid */}
+        <h3 className="text-2xl font-semibold text-slate-200 mb-8 text-center">
+          <span className="bg-gradient-to-r from-sky-400 to-purple-400 bg-clip-text text-transparent">
+            Core Technologies
+          </span>
+        </h3>
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6 md:gap-8 mb-16">
           {skills.map((skill, index) => (
             <motion.div
               key={skill.name}
@@ -137,6 +170,47 @@ const SkillsSection = ({ skills }) => {
             </motion.div>
           ))}
         </div>
+
+        {/* Tools Section */}
+        {tools && tools.length > 0 && (
+          <>
+            <h3 className="text-2xl font-semibold text-slate-200 mb-8 text-center">
+              <span className="bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">
+                Tools & Utilities
+              </span>
+            </h3>
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6 md:gap-8">
+              {tools.map((tool, index) => (
+                <motion.div
+                  key={tool.name}
+                  className="group relative bg-slate-800/50 p-6 rounded-2xl shadow-xl text-center flex flex-col items-center border border-slate-700/50 hover:border-emerald-500/50 transition-all duration-300 hover:shadow-2xl hover:shadow-emerald-500/10 hover:-translate-y-2"
+                  initial={{ opacity: 0, scale: 0.8, y: 20 }}
+                  whileInView={{ opacity: 1, scale: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.08, type: "spring", stiffness: 200 }}
+                  whileHover={{ scale: 1.05 }}
+                >
+                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-emerald-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+                  
+                  <div className="relative mb-3">
+                    <div className="absolute inset-0 rounded-full bg-emerald-500/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                    <div className="relative p-3 rounded-full bg-slate-800/80 border border-slate-700/50 group-hover:border-emerald-500/50 transition-all duration-300">
+                      {getToolIcon(tool.name)}
+                    </div>
+                  </div>
+
+                  <h3 className="text-base font-semibold text-slate-200 group-hover:text-white transition-colors">
+                    {tool.name}
+                  </h3>
+                  
+                  {tool.experience && (
+                    <p className="text-xs text-slate-500 mt-1">{tool.experience}</p>
+                  )}
+                </motion.div>
+              ))}
+            </div>
+          </>
+        )}
 
         {/* Stats footer */}
         <motion.div

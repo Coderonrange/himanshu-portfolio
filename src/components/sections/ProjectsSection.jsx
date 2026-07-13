@@ -238,7 +238,7 @@ const ProjectsSection = ({ projects }) => {
           transition={{ duration: 0.7, delay: 0.4 }}
           className="text-center mt-12"
         >
-          <Button 
+          {/* <Button 
             variant="outline" 
             size="lg" 
             className="border-purple-500/50 text-purple-400 hover:bg-purple-500 hover:text-white transition-all duration-300 group/btn"
@@ -246,7 +246,7 @@ const ProjectsSection = ({ projects }) => {
           >
             View All Projects
             <Icons.ExternalLink className="w-4 h-4 ml-2 group-hover/btn:rotate-12 transition-transform" />
-          </Button>
+          </Button> */}
         </motion.div>
       </div>
     </section>

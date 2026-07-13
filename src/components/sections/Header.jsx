@@ -253,4 +253,4 @@ const Header = ({ navItems }) => {
   );
 };
 
-export default Header;
+export default Header;                   

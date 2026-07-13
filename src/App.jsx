@@ -63,13 +63,37 @@ const App = () => {
 ];
 
   const skills = [
+    { name: 'Html', level: 70 },
+    { name: 'Css', level: 80 },
     { name: 'JavaScript', level: 90 },
     { name: 'React.js', level: 85 },
     { name: 'TailwindCSS', level: 95 },
     { name: 'Bootstrap', level: 75 },
-    { name: 'Html', level: 70 },
-    { name: 'Css', level: 80 },
+    
   ];
+  // In your parent component
+const skillsData = [
+  { name: "HTML", level: 90 },
+  { name: "CSS", level: 90 },
+  { name: "JavaScript", level: 88 },
+  { name: "React.js", level: 85 },
+  { name: 'TailwindCSS', level: 95 },
+  { name: 'Bootstrap', level: 75 },
+  { name: "Node.js", level: 75 },
+  { name: "MongoDB", level: 70 },
+  { name: "MySQl", level: 70 },
+  { name: "Python", level: 80 },
+  ,
+];
+const toolsData = [
+  { name: "VS Code", experience: "3 years" },
+  { name: "Postman", experience: "1 years" },
+  { name: "GitHub", experience: "1.6 years" },
+  { name: "Git", experience: "1.6 years" },
+  { name: "Figma", experience: "2 years" },
+   { name: "Wordpress", experience: "1 years" },
+];
+// Use it like this:
   
   const navItems = ['Home', 'About', 'Projects', 'Skills', 'Contact'];
 
@@ -81,7 +105,9 @@ const App = () => {
         <HeroSection />
         <AboutSection />
         <ProjectsSection projects={projects} />
-        <SkillsSection skills={skills} />
+        {/* <SkillsSection skills={skills} /> */}
+        <SkillsSection skills={skillsData} tools={toolsData} />
+
         <ContactSection />
       </main>
       <Footer />
